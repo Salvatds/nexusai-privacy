@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusAI — Privacy Policy / Política de Privacidad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0c14;
+      --bg-card: #12121e;
+      --bg-card-alt: #181828;
+      --border: #1e1e36;
+      --accent: #6c5ce7;
+      --accent-dim: rgba(108, 92, 231, 0.12);
+      --accent-glow: rgba(108, 92, 231, 0.25);
+      --text: #e2e0f0;
+      --text-secondary: #9896b0;
+      --text-muted: #5c5a78;
+      --success: #00cec9;
+      --warning: #fdcb6e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .grain {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .header {
+      position: relative; z-index: 1;
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(108,92,231,0.06) 0%, transparent 100%);
+    }
+
+    .header .logo {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .header .logo .icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: white;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .header h1 {
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      font-weight: 600; letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .lang-toggle {
+      display: inline-flex; gap: 0; margin-top: 1rem;
+      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+    }
+
+    .lang-btn {
+      padding: 0.45rem 1.2rem; font-size: 0.85rem; font-weight: 500;
+      background: transparent; color: var(--text-secondary); border: none;
+      cursor: pointer; transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .lang-btn.active {
+      background: var(--accent); color: white;
+    }
+
+    .lang-btn:hover:not(.active) { background: var(--bg-card-alt); }
+
+    .container {
+      position: relative; z-index: 1;
+      max-width: 720px; margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section { margin-bottom: 2.5rem; }
+
+    .section h2 {
+      font-size: 1.15rem; font-weight: 600;
+      color: var(--text); margin-bottom: 0.75rem;
+      padding-left: 0.75rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .section p {
+      color: var(--text-secondary); margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .data-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .data-card h3 {
+      font-size: 0.9rem; font-weight: 600;
+      color: var(--text); margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    .data-card h3 .badge {
+      font-size: 0.65rem; font-weight: 600;
+      padding: 0.15rem 0.5rem; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
+    .badge-local {
+      background: rgba(0, 206, 201, 0.12); color: var(--success);
+    }
+
+    .badge-external {
+      background: rgba(253, 203, 110, 0.12); color: var(--warning);
+    }
+
+    .data-card p {
+      font-size: 0.88rem; color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    .data-card ul {
+      list-style: none; padding: 0; margin: 0.5rem 0 0;
+    }
+
+    .data-card ul li {
+      font-size: 0.88rem; color: var(--text-secondary);
+      padding: 0.25rem 0 0.25rem 1.2rem;
+      position: relative;
+    }
+
+    .data-card ul li::before {
+      content: '→';
+      position: absolute; left: 0;
+      color: var(--text-muted); font-size: 0.8rem;
+    }
+
+    .highlight-box {
+      background: var(--accent-dim);
+      border: 1px solid rgba(108, 92, 231, 0.2);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .highlight-box p {
+      color: var(--text); font-weight: 500;
+      font-size: 0.95rem; margin: 0;
+    }
+
+    .contact-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .contact-box a {
+      color: var(--accent); text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-box a:hover { text-decoration: underline; }
+
+    .footer {
+      position: relative; z-index: 1;
+      text-align: center; padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--text-muted);
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .header { padding: 2rem 1rem 1.5rem; }
+      .container { padding: 1.5rem 1rem 3rem; }
+      .data-card { padding: 1rem 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="header">
+    <div class="logo">
+      <span class="icon">N</span>
+      <span>NexusAI</span>
+    </div>
+    <h1 id="page-title">Política de Privacidad</h1>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')" id="btn-es">Español</button>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">English</button>
+    </div>
+  </header>
+
+  <!-- ==================== SPANISH ==================== -->
+  <main class="container" id="content-es">
+    <div class="meta">
+      Última actualización: 1 de abril de 2026 &nbsp;·&nbsp; Versión 1.0.0
+    </div>
+
+    <div class="highlight-box">
+      <p>NexusAI no recopila, almacena ni transmite datos personales a ningún servidor propio. Toda la información se guarda exclusivamente en tu dispositivo.</p>
+    </div>
+
+    <div class="section">
+      <h2>1. Qué es NexusAI</h2>
+      <p>NexusAI es una aplicación de mensajería para comunicarse con agentes de inteligencia artificial. Funciona como un cliente local que se conecta a servidores externos configurados íntegramente por el usuario. El desarrollador de NexusAI no opera ningún servidor backend ni intermediario.</p>
+    </div>
+
+    <div class="section">
+      <h2>2. Datos que se almacenan en tu dispositivo</h2>
+      <p>La siguiente información se guarda localmente en tu dispositivo y nunca se envía a servidores del desarrollador:</p>
+
+      <div class="data-card">
+        <h3>Conversaciones y mensajes <span class="badge badge-local">Solo local</span></h3>
+        <p>El historial de conversaciones con los agentes de IA, incluyendo texto, archivos adjuntos y notas de voz, se almacena en el almacenamiento local del navegador (localStorage e IndexedDB).</p>
+      </div>
+
+      <div class="data-card">
+        <h3>Configuración de agentes <span class="badge badge-local">Solo local</span></h3>
+        <p>Los nombres, avatares, personalidades, modelos y preferencias de cada agente que configures.</p>
+      </div>
+
+      <div class="data-card">
+        <h3>Preferencias de la aplicación <span class="badge badge-local">Solo local</span></h3>
+        <p>Tema visual, idioma, tamaño de fuente, configuración de notificaciones y demás preferencias de personalización.</p>
+      </div>
+
+      <div class="data-card">
+        <h3>Datos de seguridad <span class="badge badge-local">Solo local</span></h3>
+        <p>Si configuras un PIN de acceso, se almacena únicamente un hash criptográfico (PBKDF2, 100.000 iteraciones). El PIN en texto plano nunca se guarda.</p>
+      </div>
+
+      <div class="data-card">
+        <h3>Tareas <span class="badge badge-local">Solo local</span></h3>
+        <p>Las tareas creadas por los agentes o por ti se almacenan localmente en tu dispositivo.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>3. Datos que se transmiten a servicios externos</h2>
+      <p>Cuando utilizas NexusAI, ciertos datos se envían a servidores externos que <strong>tú configuras y controlas</strong>. El desarrollador de NexusAI no tiene acceso a estos datos ni opera dichos servidores.</p>
+
+      <div class="data-card">
+        <h3>Gateway WebSocket <span class="badge badge-external">Configurado por el usuario</span></h3>
+        <p>Los mensajes que envías a los agentes se transmiten al servidor gateway cuya URL y token de autenticación introduces tú en la configuración de la app. El desarrollador de NexusAI no opera este servidor ni tiene acceso a los mensajes.</p>
+      </div>
+
+      <div class="data-card">
+        <h3>Claves API de terceros <span class="badge badge-external">Configurado por el usuario</span></h3>
+        <p>Si decides usar servicios opcionales de voz (ElevenLabs, OpenAI), introduces tus propias claves API. Estas se almacenan ofuscadas en tu dispositivo y se envían directamente a los proveedores correspondientes. El desarrollador de NexusAI nunca recibe ni almacena estas claves.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>4. Datos que NO recopilamos</h2>
+      <p>El desarrollador de NexusAI no recopila en ningún caso:</p>
+      <div class="data-card">
+        <ul>
+          <li>Datos de identificación personal (nombre, email, teléfono)</li>
+          <li>Datos de ubicación o geolocalización</li>
+          <li>Analíticas de uso o comportamiento</li>
+          <li>Identificadores de publicidad</li>
+          <li>Datos de contactos, calendario o fotos del dispositivo</li>
+          <li>Cookies de rastreo o píxeles de seguimiento</li>
+          <li>Información financiera o de pago</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>5. Uso de inteligencia artificial</h2>
+      <p>NexusAI actúa como cliente de mensajería para interactuar con modelos de inteligencia artificial. Los modelos de IA son proporcionados por servicios externos (como Anthropic, OpenAI u otros) a los que tú te conectas a través de tu propio servidor gateway. NexusAI no procesa tus conversaciones con IA propia ni envía datos a modelos de IA por cuenta propia.</p>
+    </div>
+
+    <div class="section">
+      <h2>6. Copias de seguridad</h2>
+      <p>NexusAI permite exportar todos tus datos como un archivo JSON que se descarga directamente a tu dispositivo. Este archivo puede contener datos sensibles (hash de PIN, tokens ofuscados). La responsabilidad de almacenar este archivo de forma segura recae en el usuario.</p>
+    </div>
+
+    <div class="section">
+      <h2>7. Seguridad</h2>
+      <p>NexusAI implementa las siguientes medidas de seguridad en el dispositivo:</p>
+      <div class="data-card">
+        <ul>
+          <li>Cifrado AES-256-GCM para copias de seguridad</li>
+          <li>Hash de PIN con PBKDF2 (SHA-256, 100.000 iteraciones, salt aleatorio)</li>
+          <li>Ofuscación de tokens y claves API almacenadas</li>
+          <li>Protección contra fuerza bruta (bloqueo tras 5 intentos fallidos)</li>
+          <li>Soporte para autenticación biométrica del dispositivo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>8. Servicios de terceros</h2>
+      <p>NexusAI no integra SDKs de terceros que recopilen datos (no hay Firebase, Google Analytics, Facebook SDK, ni servicios similares). Las únicas conexiones externas son las que tú configuras manualmente: tu servidor gateway y, opcionalmente, proveedores de voz.</p>
+    </div>
+
+    <div class="section">
+      <h2>9. Menores de edad</h2>
+      <p>NexusAI no está dirigida a menores de 13 años. No recopilamos intencionadamente información de menores de 13 años. Si eres padre o tutor y crees que tu hijo ha proporcionado datos a través de la app, contacta con nosotros.</p>
+    </div>
+
+    <div class="section">
+      <h2>10. Derechos del usuario</h2>
+      <p>Dado que todos los datos se almacenan localmente en tu dispositivo, tienes control total sobre ellos en todo momento. Puedes:</p>
+      <div class="data-card">
+        <ul>
+          <li>Ver todos tus datos dentro de la propia aplicación</li>
+          <li>Exportar todos tus datos mediante la función de copia de seguridad</li>
+          <li>Eliminar todos tus datos desde Ajustes → Seguridad → Borrar todos los datos</li>
+          <li>Desinstalar la aplicación, lo que elimina todos los datos asociados</li>
+        </ul>
+      </div>
+      <p>Conforme al Reglamento General de Protección de Datos (RGPD) de la Unión Europea, y dado que no tratamos datos personales en servidores propios, los derechos de acceso, rectificación, supresión, portabilidad y oposición se ejercen directamente desde la aplicación por el propio usuario.</p>
+    </div>
+
+    <div class="section">
+      <h2>11. Cambios en esta política</h2>
+      <p>Si realizamos cambios en esta política de privacidad, actualizaremos la fecha de "Última actualización" en la parte superior de esta página. Te recomendamos revisar esta política periódicamente.</p>
+    </div>
+
+    <div class="section">
+      <h2>12. Contacto</h2>
+      <div class="contact-box">
+        <p style="color: var(--text-secondary); font-size: 0.92rem;">Si tienes preguntas sobre esta política de privacidad, puedes contactar con el desarrollador en:</p>
+        <p style="margin-top: 0.75rem;"><a href="mailto:nexusai.app@proton.me">nexusai.app@proton.me</a></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== ENGLISH ==================== -->
+  <main class="container hidden" id="content-en">
+    <div class="meta">
+      Last updated: April 1, 2026 &nbsp;·&nbsp; Version 1.0.0
+    </div>
+
+    <div class="highlight-box">
+      <p>NexusAI does not collect, store, or transmit personal data to any server owned by the developer. All information is stored exclusively on your device.</p>
+    </div>
+
+    <div class="section">
+      <h2>1. What is NexusAI</h2>
+      <p>NexusAI is a messaging application for communicating with artificial intelligence agents. It works as a local client that connects to external servers configured entirely by the user. The developer of NexusAI does not operate any backend or intermediary server.</p>
+    </div>
+
+    <div class="section">
+      <h2>2. Data stored on your device</h2>
+      <p>The following information is stored locally on your device and is never sent to the developer's servers:</p>
+
+      <div class="data-card">
+        <h3>Conversations and messages <span class="badge badge-local">Local only</span></h3>
+        <p>Your conversation history with AI agents, including text, attachments, and voice notes, is stored in the browser's local storage (localStorage and IndexedDB).</p>
+      </div>
+
+      <div class="data-card">
+        <h3>Agent configuration <span class="badge badge-local">Local only</span></h3>
+        <p>Names, avatars, personalities, models, and preferences for each agent you configure.</p>
+      </div>
+
+      <div class="data-card">
+        <h3>App preferences <span class="badge badge-local">Local only</span></h3>
+        <p>Visual theme, language, font size, notification settings, and other personalization preferences.</p>
+      </div>
+
+      <div class="data-card">
+        <h3>Security data <span class="badge badge-local">Local only</span></h3>
+        <p>If you set up an access PIN, only a cryptographic hash (PBKDF2, 100,000 iterations) is stored. The plain-text PIN is never saved.</p>
+      </div>
+
+      <div class="data-card">
+        <h3>Tasks <span class="badge badge-local">Local only</span></h3>
+        <p>Tasks created by agents or by you are stored locally on your device.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>3. Data transmitted to external services</h2>
+      <p>When using NexusAI, certain data is sent to external servers that <strong>you configure and control</strong>. The developer of NexusAI has no access to this data and does not operate these servers.</p>
+
+      <div class="data-card">
+        <h3>WebSocket Gateway <span class="badge badge-external">User-configured</span></h3>
+        <p>Messages you send to agents are transmitted to the gateway server whose URL and authentication token you enter in the app settings. The developer of NexusAI does not operate this server nor has access to your messages.</p>
+      </div>
+
+      <div class="data-card">
+        <h3>Third-party API keys <span class="badge badge-external">User-configured</span></h3>
+        <p>If you choose to use optional voice services (ElevenLabs, OpenAI), you enter your own API keys. These are stored obfuscated on your device and sent directly to the respective providers. The developer of NexusAI never receives or stores these keys.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>4. Data we do NOT collect</h2>
+      <p>The developer of NexusAI does not collect under any circumstances:</p>
+      <div class="data-card">
+        <ul>
+          <li>Personal identification data (name, email, phone)</li>
+          <li>Location or geolocation data</li>
+          <li>Usage or behavior analytics</li>
+          <li>Advertising identifiers</li>
+          <li>Contacts, calendar, or photos from your device</li>
+          <li>Tracking cookies or tracking pixels</li>
+          <li>Financial or payment information</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>5. Use of artificial intelligence</h2>
+      <p>NexusAI acts as a messaging client for interacting with artificial intelligence models. AI models are provided by external services (such as Anthropic, OpenAI, or others) that you connect to through your own gateway server. NexusAI does not process your conversations with its own AI nor send data to AI models on its own behalf.</p>
+    </div>
+
+    <div class="section">
+      <h2>6. Backups</h2>
+      <p>NexusAI allows you to export all your data as a JSON file that is downloaded directly to your device. This file may contain sensitive data (PIN hash, obfuscated tokens). The responsibility for securely storing this file lies with the user.</p>
+    </div>
+
+    <div class="section">
+      <h2>7. Security</h2>
+      <p>NexusAI implements the following on-device security measures:</p>
+      <div class="data-card">
+        <ul>
+          <li>AES-256-GCM encryption for backups</li>
+          <li>PIN hashing with PBKDF2 (SHA-256, 100,000 iterations, random salt)</li>
+          <li>Obfuscation of stored tokens and API keys</li>
+          <li>Brute-force protection (lockout after 5 failed attempts)</li>
+          <li>Support for device biometric authentication</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>8. Third-party services</h2>
+      <p>NexusAI does not integrate third-party SDKs that collect data (no Firebase, Google Analytics, Facebook SDK, or similar services). The only external connections are those you manually configure: your gateway server and, optionally, voice providers.</p>
+    </div>
+
+    <div class="section">
+      <h2>9. Children's privacy</h2>
+      <p>NexusAI is not directed at children under the age of 13. We do not knowingly collect information from children under 13. If you are a parent or guardian and believe your child has provided data through the app, please contact us.</p>
+    </div>
+
+    <div class="section">
+      <h2>10. User rights</h2>
+      <p>Since all data is stored locally on your device, you have full control over it at all times. You can:</p>
+      <div class="data-card">
+        <ul>
+          <li>View all your data within the application itself</li>
+          <li>Export all your data using the backup feature</li>
+          <li>Delete all your data from Settings → Security → Delete all data</li>
+          <li>Uninstall the application, which removes all associated data</li>
+        </ul>
+      </div>
+      <p>In compliance with the European Union's General Data Protection Regulation (GDPR), and given that we do not process personal data on our own servers, the rights of access, rectification, erasure, portability, and objection are exercised directly from the application by the user.</p>
+    </div>
+
+    <div class="section">
+      <h2>11. Changes to this policy</h2>
+      <p>If we make changes to this privacy policy, we will update the "Last updated" date at the top of this page. We recommend reviewing this policy periodically.</p>
+    </div>
+
+    <div class="section">
+      <h2>12. Contact</h2>
+      <div class="contact-box">
+        <p style="color: var(--text-secondary); font-size: 0.92rem;">If you have questions about this privacy policy, you can contact the developer at:</p>
+        <p style="margin-top: 0.75rem;"><a href="mailto:nexusai.app@proton.me">nexusai.app@proton.me</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 NexusAI. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      const esContent = document.getElementById('content-es');
+      const enContent = document.getElementById('content-en');
+      const btnEs = document.getElementById('btn-es');
+      const btnEn = document.getElementById('btn-en');
+      const title = document.getElementById('page-title');
+
+      if (lang === 'en') {
+        esContent.classList.add('hidden');
+        enContent.classList.remove('hidden');
+        btnEs.classList.remove('active');
+        btnEn.classList.add('active');
+        title.textContent = 'Privacy Policy';
+        document.documentElement.lang = 'en';
+      } else {
+        enContent.classList.add('hidden');
+        esContent.classList.remove('hidden');
+        btnEn.classList.remove('active');
+        btnEs.classList.add('active');
+        title.textContent = 'Política de Privacidad';
+        document.documentElement.lang = 'es';
+      }
+    }
+
+    // Detect browser language
+    if (navigator.language && !navigator.language.startsWith('es')) {
+      setLang('en');
+    }
+  </script>
+</body>
+</html>
